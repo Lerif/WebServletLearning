@@ -1,0 +1,101 @@
+package ServeletLearning;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class ServeletTry
+ */
+@WebServlet("/ServeletTry")
+public class ServeletTry extends HttpServlet {
+	
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		// Get by name, not the best way REFACTOR
+		PrintWriter outOnScreen = response.getWriter();
+		outOnScreen.println("<html>");
+		outOnScreen.println("<body>");
+		
+		outOnScreen.println("Nome:" + request.getParameter("name"));
+		outOnScreen.println("<br>");
+		outOnScreen.println("Sexo:" + request.getParameter("sex"));
+		outOnScreen.println("<br>");
+		
+		outOnScreen.println("Objetivo:\n" + request.getParameter("objective"));
+		outOnScreen.println("<br>");
+		
+		outOnScreen.println("Conhecimento(s)");
+		outOnScreen.println("<br>");
+		printOnWriteTrueCheckboxes(response, request.getParameter("c"), "C/C++");
+		printOnWriteTrueCheckboxes(response, request.getParameter("Java"), "Java");
+		printOnWriteTrueCheckboxes(response, request.getParameter("vb"), "Visual Basic");
+		printOnWriteTrueCheckboxes(response, request.getParameter("php"), "PHP");
+		printOnWriteTrueCheckboxes(response, request.getParameter("html"), "HTML");
+		
+		outOnScreen.println("/<body>");
+		outOnScreen.println("</html>");
+		
+		String redirectPageAddress = "http://localhost:8080/WebLearning/FilledForm.jsp";
+		response.sendRedirect(response.encodeRedirectURL(redirectPageAddress));
+	}
+	
+	protected void doPost(HttpServletRequest request,HttpServletResponse response)
+            		throws ServletException, IOException {
+		
+		// Get by name, not the best way REFACTOR
+		String name = request.getParameter("name");
+		String sex = request.getParameter("sex");
+		String objetive = request.getParameter("objective");
+		String checkboxC = request.getParameter("c");
+		String checkboxJava = request.getParameter("java");
+		String checkboxVB = request.getParameter("vb");
+		String checkboxPhp = request.getParameter("php");
+		String checkboxHtml = request.getParameter("html");
+		
+		System.out.println("name: " + name);
+		System.out.println("sex: " + sex);
+		System.out.println("objetive: " + objetive);
+		System.out.println("Conhecimento nas linguagens");
+		printOnConsoleTrueCheckboxes("C/C++", checkboxC);
+		printOnConsoleTrueCheckboxes("Java", checkboxJava);
+		printOnConsoleTrueCheckboxes("Visual Basic", checkboxVB);
+		printOnConsoleTrueCheckboxes("PHP", checkboxPhp);
+		printOnConsoleTrueCheckboxes("HTML", checkboxHtml);
+		
+		doGet(request, response);
+	}
+	
+	protected void performForward(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException{
+		
+		
+	}
+	
+	protected void printOnConsoleTrueCheckboxes(String title, String checkbox){
+		if(checkbox != null){
+			System.out.println(title);
+		}
+	}
+	
+	protected void printOnWriteTrueCheckboxes(HttpServletResponse response, String checkbox, String toPrint)
+			throws ServletException, IOException {
+		PrintWriter outOnScreen = response.getWriter();
+		if(checkbox != null){
+			outOnScreen.println("-> " + toPrint + "<br>");
+		}
+	}
+	
+}

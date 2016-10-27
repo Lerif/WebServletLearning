@@ -1,0 +1,12 @@
+<servlet>
+	<servlet-name>TestServlet</servlet-name>
+	<servlet-class>br.com.servletao.servlet.ServeletTry</servlet-class>
+
+	<servlet-mapping>
+		<servlet-name>TestServlet</servlet-name>
+		<url-pattern>/ServeletTry</url-pattern>
+	</servlet-mapping>
+	
+</servlet>
+
+

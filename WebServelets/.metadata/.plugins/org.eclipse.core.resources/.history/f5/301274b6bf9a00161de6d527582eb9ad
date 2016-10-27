@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>HelloWorld</title>
+</head>
+<body>
+	<form name = "CadastroUsuario" id="CadastroId" method="post">
+		<fieldset>
+			<legend>Cadastro</legend>
+			Nome:
+			<input type="text" 	name="nome" size="60" placeholder="Digite o seu nome" required/>
+			RG:
+			<input type="number" 	name="rg" size="60" placeholder="Digite o seu rg" required/>
+			<br>
+			<button onClick="tratamentoErros()" value="Submit form">Enviar</button>
+		</fieldset>
+	</form>
+</body>
+
+<script>
+	function tratamentoErros(){
+		if(document.cadastro){
+			
+		}
+		document.getElementById("CadastroId").submit();
+	}
+	
+</script>
+</html>

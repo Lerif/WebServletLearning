@@ -1,0 +1,46 @@
+package ServeletLearning;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class ServeletTry
+ */
+@WebServlet("/ServeletTry")
+public class ServeletTry extends HttpServlet {
+	
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		PrintWriter outOnScreen = response.getWriter();
+	}
+	
+	protected void doPost(HttpServletRequest request,HttpServletResponse response)
+            		throws ServletException, IOException {
+		
+		// Get by name
+		String name = request.getParameter("name");
+		String sex = request.getParameter("sex");
+		String objetive = request.getParameter("objetive");
+		String checkboxC = request.getParameter("c");
+		String checkboxJava = request.getParameter("java");
+		String checkboxVB = request.getParameter("c");
+		String checkboxPhp = request.getParameter("c");
+		String checkboxHtml = request.getParameter("c");
+		
+		System.out.println("name:" + name);
+		System.out.println("sex:" + sex);
+		System.out.println("objetive:" + objetive);
+		System.out.println("checkbox:" + checkbox);
+	}
+	
+}

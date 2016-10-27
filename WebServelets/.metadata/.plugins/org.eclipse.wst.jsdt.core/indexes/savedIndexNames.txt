@@ -1,0 +1,9 @@
+INDEX VERSION 1.3+/home/ubuntu/0A/Many_Workspaces/WebServelets/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+3973343937.index
+1242283792.index
+2010244030.index
+1242283792.index
+1061287557.index
+1459565994.index
+2528223485.index
+654622378.index

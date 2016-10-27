@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>HelloWorld</title>
+</head>
+<body>
+	<form name = "CadastroUsuario" id="CadastroId" method="post" action="ServeletTry">
+		<fieldset>
+			<legend>Cadastro</legend>
+			Nome:
+			<input type="text" 	name="name" size="60" placeholder="Digite o seu nome" required/>
+			<br>
+			Objetivo
+			<br>
+			<textarea name="objetivo" cols="35" rows="2" placeholder="Digite o seu objetivo" required></textarea>
+			
+			<br>
+			<button onClick="entrar()" value="Submit form">Entrar</button>
+			<br>
+			
+			Linguagens de programação
+			<br>
+			<input type="checkbox" id="formacao1" name="c" value="0" /> C/C++ <br>
+			<input type="checkbox" id="formacao2" name="java" value="1" /> Java<br>
+			<input type="checkbox" id="formacao3" name="vb" value="2" /> Visual Basic<br>
+			<input type="checkbox" id="formacao5" name="php" value="4" /> PHP<br>
+			<input type="checkbox" id="formacao7" name="html" value="6" /> Html<br>
+		</fieldset>
+	</form>
+</body>
+
+<script>
+	function entrar(){
+		document.getElementById("CadastroId").submit();
+	}
+</script>
+</html>

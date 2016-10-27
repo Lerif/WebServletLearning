@@ -1,0 +1,12 @@
+<servlet>
+	<servlet-name>Servlettestao</servlet-name>
+	<servlet-class>br.com.servletao.servlet.ServeletTries</servlet-class>
+
+	<servlet-mapping>
+		<servlet-name>Servlettestao</servlet-name>
+		<url-pattern>ola</url-pattern>
+	</servlet-mapping>
+	
+</servlet>
+
+
