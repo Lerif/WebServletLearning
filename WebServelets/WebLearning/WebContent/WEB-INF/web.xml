@@ -3,7 +3,7 @@
   
   <display-name>WebLearning</display-name>
   <welcome-file-list>
-    <welcome-file>TryJSP.jsp</welcome-file>
+    <welcome-file>Index.jsp</welcome-file>
   </welcome-file-list>
   
 <servlet>

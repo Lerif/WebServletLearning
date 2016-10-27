@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>HelloWorld</title>
+<title>Cadastramento</title>
 </head>
 <body>
 	<form name = "CadastroUsuario" id="CadastroId" method="post" action="ServeletTry">
@@ -13,65 +13,106 @@
 			Nome:
 			<input type="text" 	name="name" size="60" placeholder="Digite o seu nome" required/>
 			<br>
+			<br>
 			
 			Sexo:
 			<input type="radio" name="sex" value="male" />Masculino
 			<input type="radio" name="sex" value="female"  />Feminino
 			<input type="radio" name="sex" value="undefined"  />Outros
 			<br>
-			
+			<br>
 			Objetivo
 			<br>
-			<textarea name="objective" cols="35" rows="2" placeholder="Digite o seu objetivo" required></textarea>
+			<textarea name="objective" cols="35" rows="5" placeholder="Digite o seu objetivo" required></textarea>
+			<br>
 			<br>
 			
-			Conhecimento nas Linguagens de programação
-			<br>
 			<table border="2">
+				<th> Conhecimento de Linguagens de programação </th>
+				<th> <input type="checkbox" onchange="selectAll(this)" name="linguaguem_programacao" /></th>
 				<tr>
-					<td> <input type="checkbox" id="formation1" name="c" value="0" /> </td>
 					<td> C/C++ </td>
+					<td> <input type="checkbox" id="formation1" name="linguaguem_programacao" value="C/C++" /> </td>
 				</tr>
 				<tr>
-					<td><input type="checkbox" id="formation2" name="java" value="1" /></td> 
 					<td> Java</td>
+					<td><input type="checkbox" id="formation2" name="linguaguem_programacao" value="Java" /></td>
 				</tr>
 				<tr>
-					<td><input type="checkbox" id="formation3" name="vb" value="2" /></td> 
 					<td> Visual Basic</td>
+					<td><input type="checkbox" id="formation3" name="linguaguem_programacao" value="Visual Basic" /></td> 
 				</tr>
 				<tr>
-					<td><input type="checkbox" id="formation4" name="php" value="3" /></td>
 					<td> PHP</td>
+					<td><input type="checkbox" id="formation4" name="linguaguem_programacao" value="PHP" /></td>
 				</tr>
 				<tr>
-					<td><input type="checkbox" id="formation5" name="html" value="4" /> </td>
 					<td> Html</td>
+					<td><input type="checkbox" id="formation5" name="linguaguem_programacao" value="HTML" /> </td>
 				</tr>
 			</table>
 			
 			<br>
-			<img src="/resources/linkedin.png" width="18px" lenght="18px">
-    		http://linkedin.com/ <input type="text" name="linkedin" size="37" placeholder="Perfil linkedin"/>			
+			<img src="images/linkedin.png" width="18px" lenght="18px">
+    		<input type="text" name="linkedin" size="37" placeholder="Perfil linkedin"/>
+    		<br>
+    		<br>
+    		Tipo:
+			<input type="radio" name="sendType" value="redirect"/>Redirect
+			<input type="radio" name="sendType" value="forward"/>Forward
+			<br>
+    				
 		</fieldset>
 		
 	</form>
 	<br>
-	<button onClick="cadastrar()" value="Submit form">Cadastrar</button>
-	<button onClick="voltar()" >Voltar</button>
+	<button onClick="signUp()" value="Submit form">Cadastrar</button>
+	<button onClick="goBack()" >Voltar</button>
 	<br>
 </body>
 
 <script>
-	function cadastrar(){
+	function signUp()
+	{
 		document.getElementById("CadastroId").submit();
 	}
 	
-	function voltar(){
+	function goBack()
+	{
 		var confirmGoBack = confirm("Voltando perdera todos os dados digitados.\nTem certeza que deseja voltar ?");
-		if(confirmGoBack == true){
+		
+		if(confirmGoBack == true)
+		{
 			location.href="Index.jsp";
 		}
 	}
+	
+	function selectAll(masterSelected)
+	{
+		
+		var checkboxes = document.getElementsByTagName("input");
+
+		if(masterSelected.checked)
+		{
+			checkOrUncheckAll(checkboxes, true);
+		} 
+		else 
+		{
+			checkOrUncheckAll(checkboxes, false);
+		}
+		
+	}
+	
+	function checkOrUncheckAll(inputElement, check)
+	{
+		for (var i=0; i<inputElement.length; i++)
+		{
+			if(inputElement[i].type == "checkbox")
+			{
+				inputElement[i].checked = check;
+			}
+		}
+	}
+	
 </script>
 </html>

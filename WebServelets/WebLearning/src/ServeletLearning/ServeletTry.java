@@ -48,9 +48,7 @@ public class ServeletTry extends HttpServlet {
 		
 		outOnScreen.println("/<body>");
 		outOnScreen.println("</html>");
-		
-		String redirectPageAddress = "FilledForm.jsp";
-		response.sendRedirect(response.encodeRedirectURL(redirectPageAddress));
+
 	}
 	
 	protected void doPost(HttpServletRequest request,HttpServletResponse response)
@@ -59,32 +57,38 @@ public class ServeletTry extends HttpServlet {
 		// Get by name, not the best way REFACTOR
 		String name = request.getParameter("name");
 		String sex = request.getParameter("sex");
-		String objetive = request.getParameter("objective");
-		String checkboxC = request.getParameter("c");
-		String checkboxJava = request.getParameter("java");
-		String checkboxVB = request.getParameter("vb");
-		String checkboxPhp = request.getParameter("php");
-		String checkboxHtml = request.getParameter("html");
+		String objective = request.getParameter("objective");
+		String[] linguagens = request.getParameterValues("linguaguem_programacao");
+		String sendType = request.getParameter("sendType");
+		String linkedin = request.getParameter("linkedin");
 		
 		System.out.println("name: " + name);
 		System.out.println("sex: " + sex);
-		System.out.println("objetive: " + objetive);
-		System.out.println("Conhecimento nas linguagens");
-		printOnConsoleTrueCheckboxes("C/C++", checkboxC);
-		printOnConsoleTrueCheckboxes("Java", checkboxJava);
-		printOnConsoleTrueCheckboxes("Visual Basic", checkboxVB);
-		printOnConsoleTrueCheckboxes("PHP", checkboxPhp);
-		printOnConsoleTrueCheckboxes("HTML", checkboxHtml);
+		System.out.println("objetive: " + objective);
+		System.out.println("linkedin: " + linkedin);
 		
-		if(checkboxC != null && checkboxJava == null){
+		System.out.println("Conhecimento nas linguagens");
+		
+		for (int i=1; i<linguagens.length; i++){
+			System.out.println("-> " + linguagens[i]);
+		}
+		
+		doGet(request, response);
+		if(sendType.equals("forward")){
 			System.out.println("Forwarding");
 			performForward(request, response);
 		}
 		else {
 			System.out.println("Redirecting");
-			doGet(request, response);
-		}
+			performRedirect(request, response);
+		}	
+	}
+	
+	protected void performRedirect(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException{
 		
+		String redirectPageAddress = "FilledForm.jsp";
+		response.sendRedirect(redirectPageAddress);
 	}
 	
 	protected void performForward(HttpServletRequest request, HttpServletResponse response)
